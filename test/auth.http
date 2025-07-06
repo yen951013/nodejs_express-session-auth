@@ -1,0 +1,45 @@
+@host = http://127.0.0.1:3000
+GET {{host}}/
+###
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{
+  "userName": "danny",
+	"email": "danny@mail.com",
+	"password": "@@danny"
+}
+###
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{
+  "userName": "john",
+	"email": "john@mail.com",
+	"password": "@@john"
+}
+###
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "userName": "john",
+	"password": "@@john"
+}
+###
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "userName": "danny",
+	"password": "@@danny"
+}
+###
+POST {{host}}/api/auth/logout
+###
+GET {{host}}/api/users
+###
+GET {{host}}/api/users/me
+###
+DELETE {{host}}/api/users
+###
