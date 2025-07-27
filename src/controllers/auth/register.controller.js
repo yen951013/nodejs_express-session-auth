@@ -1,4 +1,4 @@
-import { User } from "../../database/models/index.js";
+import { User } from "../../database/models/index.model.js";
 import bcrypt from 'bcrypt';
 
 export default async (req, res) => {

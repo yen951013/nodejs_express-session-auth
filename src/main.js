@@ -1,8 +1,8 @@
 import express from 'express';
 import session from 'express-session';
 import 'dotenv/config';
-import { connectDB } from './database/connect.js';
-import registerRoutes from './routes/index.js'
+import { connectDB } from './database/connect.db.js';
+import registerRoutes from './routes/index.route.js'
 const app = express();
 
 app.use(express.json());

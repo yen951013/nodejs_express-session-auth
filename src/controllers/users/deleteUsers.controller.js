@@ -1,9 +1,9 @@
-import { User } from '../../database/models/index.js';
+import { User } from "../../database/models/index.model.js";
 
 export default async (req, res) => {
   if (!req.session.userID) {
     return res.status(401).json({ message: 'Unauthorized' });
   }
-  const users = await User.findById(req.session.userID);
-  res.json(users);
+  await User.deleteMany();
+  res.status(200).send('All users deleted');
 };
