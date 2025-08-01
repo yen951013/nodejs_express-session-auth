@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 
 export default async (req, res) => {
   try {
-    const user = await User.findOne({ userName: req.body.userName });
+    const user = await User.findOne({ userName: req.body.userName }).select('+passwordHash');
     if (!user)  return res.status(404).json({ message: '使用者名稱不存在' });
     
     const validPassword = await bcrypt.compare(req.body.password, user.passwordHash);
