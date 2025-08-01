@@ -14,7 +14,7 @@ export default async (req, res) => {
     }
 
     const passwordHash = await bcrypt.hash(req.body.password, 11);
-    await User.create({
+    const user = await User.create({
       userName: req.body.userName,
       email: req.body.email,
       passwordHash,
