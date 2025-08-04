@@ -4,11 +4,11 @@ import bcrypt from 'bcrypt';
 export default async (req, res) => {
   try {
     const user = await User.findOne({ userName: req.body.userName }).select('+passwordHash');
-    if (!user)  return res.status(404).json({ message: '使用者名稱不存在' });
+    if (!user)  return res.status(404).json({ message: '帳號或密碼錯誤' });
     
     const validPassword = await bcrypt.compare(req.body.password, user.passwordHash);
     if (!validPassword) {
-      return res.status(401).json({ message: '密碼錯誤' });
+      return res.status(401).json({ message: '帳號或密碼錯誤' });
     }
     
     req.session.userID = user._id;
